@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1 class="my-4 text-center text-lg-left text-danger">Now Showing Movies</h1>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+
+        {% for now_showing_movie in now_showing_movies %}
+
+
+
+        <div class="col-lg-4">
+            <a href="{% url 'Qfxcinema:movie-detail' now_showing_movie.pk %}" class="d-block mb-4 h-100">
+                <img class="img-rounded img-responsive" src="{{ now_showing_movie.poster.url }}" alt="" width="300" height="350">
+
+            </a>
+            <strong><h2 class="text-center"> {{ now_showing_movie }}</h2></strong>
+        </div>
+
+
+        {% endfor %}
+    </div>
+    <div class="container">
+        <br>
+        <br>
+        <div class="page-header">
+
+            <h1 class="my-4 text-center text-lg-left text-danger">Upcoming Movies</h1>
+
+        </div>
+        <div class="row">
+
+            {% for Movie in Movies %}
+
+
+
+            <div class="col-lg-4">
+                <a href="{% url 'Qfxcinema:movie-detail' Movie.pk %}" class="d-block mb-4 h-100">
+                    <img class="img-responsive img-rounded" src="{{ Movie.poster.url }}" alt=""width="300" height="350">
+
+                </a>
+                <strong><h2 class="text-center"> {{ Movie }}</h2></strong>
+
+            </div>
+
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <style type="text/css">
+
+img {
+    width: 500px; /* You can set the dimensions to whatever you want */
+    height: 300px;
+    object-fit: cover;
+}
+</style>
+
+    {% endblock%}

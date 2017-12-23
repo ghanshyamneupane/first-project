@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+update language
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="container">
+	<h1>{{ delete_Movie }} {{ Update_Movie }}</h1>
+
+	<form method="Post" enctype="multipart/form-data">
+		{% csrf_token %}
+
+		{{ form.as_p }} <br>
+		<button type="submit" class="btn btn-info btn-lg">{{ delete }} {{ Update }}</button>
+
+	</form>
+</div>
+
+
+
+{% endblock%}

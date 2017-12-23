@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create language
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+	<h1>{{ language}}</h1>
+
+	<form method="Post">
+		{% csrf_token %}
+
+		{{ form.as_p }} <br>
+		<button type="submit" class="btn btn-info btn-lg">Create</button>
+
+
+	</form>
+
+    <br>
+    <br>
+    <ol>
+        {% for Language in Languages %}
+            <li>{{ Language }}</li><a href="{% url 'Qfxcinema:language-update' Language.pk %}">Language update</a>
+
+        {% endfor  %}
+    </ol>
+
+
+</div>
+<a href="{% url 'Qfxcinema:language-list' %}">Language List</a>
+
+{% endblock%}
